@@ -1,0 +1,44 @@
+#include <iostream>
+
+class Letter {
+public:
+    std::string content;
+
+    Letter(std::string content) : content(content) {}
+};
+
+class Person {
+public:
+    
+    Letter *letter;
+
+    Person() : letter(nullptr) {}
+};
+
+class Postman {
+public:
+    
+    Letter letter;
+
+    Postman(const Letter &letter) : letter(letter) {}
+};
+
+class Mailman : public Postman {
+public:
+    std::string area;
+
+    Mailman(const Letter &letter, std::string area) : Postman(letter), area(area) {}
+};
+
+int main() {
+    
+    Letter letter1("ЛАДНО");
+    Person person;
+    person.letter = &letter1;
+
+    Postman postman(letter1);
+    Mailman mailman(letter1, "БЫВАЕТ");
+    
+    
+    return 0;
+}
